@@ -24,9 +24,11 @@ public class VocubularyController {
         Document document = Jsoup.connect("https://www.dictionary.com/e/word-of-the-day/").get();
         Elements elements = document.getElementsByClass("otd-item-headword__word");
         Elements desc = document.getElementsByClass("otd-item-headword__pos");
+        Elements example = document.getElementsByClass("wotd-item-example__content");
         Word word = new Word();
         word.setWordOfDay(elements.get(0).text());
         word.setMeaning(desc.get(0).child(1).text());
+        word.setExample(example.get(0).text());
         return word;
     }
 

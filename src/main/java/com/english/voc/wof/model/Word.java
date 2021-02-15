@@ -5,6 +5,9 @@ public class Word {
     private String wordOfDay;
     private String meaning;
 
+
+    private String example;
+
     public String getWordOfDay() {
         return wordOfDay;
     }
@@ -21,7 +24,13 @@ public class Word {
         this.meaning = meaning;
     }
 
+    public String getExample() {
+        return example;
+    }
 
+    public void setExample(String example) {
+        this.example = example;
+    }
 
 
 }

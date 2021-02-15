@@ -84,18 +84,22 @@ Add-Type -AssemblyName System.Drawing
 $filename = "$home\foo.png" 
 $bmp = new-object System.Drawing.Bitmap 1500,500 
 $font = new-object System.Drawing.Font Consolas,36 
-$fontMeaning = new-object System.Drawing.Font Consolas,12 
+$fontMeaning = new-object System.Drawing.Font Consolas,14
+$fontExample = new-object System.Drawing.Font Consolas,15
 $brushBg = [System.Drawing.Brushes]::white 
-$brushFg = [System.Drawing.Brushes]::Black 
+$brushFg = [System.Drawing.Brushes]::Black
+
 $graphics = [System.Drawing.Graphics]::FromImage($bmp) 
 $graphics.FillRectangle($brushBg,0,0,$bmp.Width,$bmp.Height) 
 $rect = [System.Drawing.RectangleF]::FromLTRB(0, 0, $bmp.Width, $bmp.Height)
 $rectMeaning = [System.Drawing.RectangleF]::FromLTRB(0, 0, $bmp.Width, $bmp.Height+100)
+$reactExample = [System.Drawing.RectangleF]::FromLTRB(0, 0, $bmp.Width, $bmp.Height+200)
 $format = [System.Drawing.StringFormat]::GenericDefault
 $format.Alignment = [System.Drawing.StringAlignment]::Center
 $format.LineAlignment = [System.Drawing.StringAlignment]::Center
 $graphics.DrawString($response.wordOfDay,$font,$brushFg,$rect,$format) 
 $graphics.DrawString($response.meaning,$fontMeaning,$brushFg,$rectMeaning,$format);
+$graphics.DrawString($response.example,$fontExample,$brushFg,$reactExample,$format);
 $graphics.Dispose() 
 $bmp.Save($filename);
 $bmp.Dispose();
